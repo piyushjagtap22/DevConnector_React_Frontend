@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "homepage": "https://piyushjagtap22.github.io/react-gh-pages",
-  "private": true,
+  "private": false,
   "dependencies": {
     "axios": "^1.2.2",
     "react": "^17.0.2",
