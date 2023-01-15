@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../utils/api';
 import { setAlert } from './alert';
 import {
   REGISTER_SUCCESS,
@@ -20,12 +20,7 @@ import {
 // Load User
 export const loadUser = () => async (dispatch) => {
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).get('/auth');
+    const res = await api.get('/auth');
 
     dispatch({
       type: USER_LOADED,
@@ -41,12 +36,7 @@ export const loadUser = () => async (dispatch) => {
 // Register User
 export const register = (formData) => async (dispatch) => {
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).post('/users', formData);
+    const res = await api.post('/users', formData);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -71,12 +61,7 @@ export const login = (email, password) => async (dispatch) => {
   const body = { email, password };
 
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).post('/auth', body);
+    const res = await api.post('/auth', body);
 
     dispatch({
       type: LOGIN_SUCCESS,

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../utils/api';
 import { setAlert } from './alert';
 
 import {
@@ -22,12 +22,7 @@ import {
 // Get current users profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).get('/profile/me');
+    const res = await api.get('/profile/me');
 
     dispatch({
       type: GET_PROFILE,
@@ -46,12 +41,7 @@ export const getProfiles = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
 
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).get('/profile');
+    const res = await api.get('/profile');
 
     dispatch({
       type: GET_PROFILES,
@@ -68,12 +58,7 @@ export const getProfiles = () => async (dispatch) => {
 // Get profile by ID
 export const getProfileById = (userId) => async (dispatch) => {
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).get(`/profile/user/${userId}`);
+    const res = await api.get(`/profile/user/${userId}`);
 
     dispatch({
       type: GET_PROFILE,
@@ -90,12 +75,7 @@ export const getProfileById = (userId) => async (dispatch) => {
 // Get Github repos
 export const getGithubRepos = (username) => async (dispatch) => {
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).get(`/profile/github/${username}`);
+    const res = await api.get(`/profile/github/${username}`);
 
     dispatch({
       type: GET_REPOS,
@@ -113,12 +93,7 @@ export const createProfile =
   (formData, navigate, edit = false) =>
     async (dispatch) => {
       try {
-        const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).post('/profile', formData);
+        const res = await api.post('/profile', formData);
 
         dispatch({
           type: GET_PROFILE,
@@ -149,12 +124,7 @@ export const createProfile =
 // Add Experience
 export const addExperience = (formData, navigate) => async (dispatch) => {
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).put('/profile/experience', formData);
+    const res = await api.put('/profile/experience', formData);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -181,12 +151,7 @@ export const addExperience = (formData, navigate) => async (dispatch) => {
 // Add Education
 export const addEducation = (formData, navigate) => async (dispatch) => {
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).put('/profile/education', formData);
+    const res = await api.put('/profile/education', formData);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -213,12 +178,7 @@ export const addEducation = (formData, navigate) => async (dispatch) => {
 // Delete experience
 export const deleteExperience = (id) => async (dispatch) => {
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).delete(`/profile/experience/${id}`);
+    const res = await api.delete(`/profile/experience/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -237,12 +197,7 @@ export const deleteExperience = (id) => async (dispatch) => {
 // Delete education
 export const deleteEducation = (id) => async (dispatch) => {
   try {
-    const res = await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).delete(`/profile/education/${id}`);
+    const res = await api.delete(`/profile/education/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -262,12 +217,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
-      await axios.create({
-      baseURL: 'https://node-app-vercel.vercel.app/api',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).delete('/profile');
+      await api.delete('/profile');
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });
