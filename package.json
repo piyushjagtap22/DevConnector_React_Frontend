@@ -1,15 +1,13 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "https://piyushjagtap22.github.io/DevConnector_React_Frontend",
-  "private": false,
+  "private": true,
   "dependencies": {
-    "axios": "^1.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "4.0.3",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
@@ -19,9 +17,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy":"gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,8 +34,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://node-app-vercel.vercel.app",
-  "devDependencies": {
-    "gh-pages": "^4.0.0"
-  }
+  "proxy": "https://node-app-vercel.vercel.app"
 }
