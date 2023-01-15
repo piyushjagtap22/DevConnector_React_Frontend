@@ -1,6 +1,6 @@
 import api from '../utils/api';
 import { setAlert } from './alert';
-
+import axios from 'axios'
 import {
   GET_PROFILE,
   GET_PROFILES,
@@ -41,7 +41,17 @@ export const getProfiles = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
 
   try {
-    const res = await api.get('/profile');
+  
+    // const res = api.get('https://node-app-vercel.vercel.app/api/profile');
+
+    const res = await axios.create({
+      baseURL: 'https://node-app-vercel.vercel.app/api',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).get('/profile');
+
+    
 
     dispatch({
       type: GET_PROFILES,
