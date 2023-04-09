@@ -23,8 +23,11 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
+
 import './App.css';
 
+
+const appName = require('./../package.json').appName ;
 const App = () => {
   useEffect(() => {
     // check for token in LS when app first runs
@@ -44,7 +47,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Router>
+      <Router basename ={appName}>
         <Navbar />
         <Alert />
         <Routes>

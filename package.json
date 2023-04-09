@@ -1,4 +1,5 @@
 {
+  "appName": "devconnector",
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -9,7 +10,6 @@
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
-    "react-scripts": "4.0.3",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
@@ -36,5 +36,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://node-app-vercel.vercel.app"
+  "proxy": "https://node-app-vercel.vercel.app",
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
+  }
 }
